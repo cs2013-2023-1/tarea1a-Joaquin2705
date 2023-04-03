@@ -1,4 +1,5 @@
 #include "foo.h"
+
 Matriz2D::Matriz2D(){
     this->filas=3;
     this->columnas=3;
@@ -54,9 +55,8 @@ Matriz2D::Matriz2D(const Matriz2D& m){
 }
 
 Matriz2D::Matriz2D(Matriz2D&& m){
-    this->filas=m.filas;
-    this->columnas=m.columnas;
-    this->ptr=m.ptr;
+    m.filas=NULL;
+    m.columnas=NULL;
     m.ptr=NULL;
 }
 
