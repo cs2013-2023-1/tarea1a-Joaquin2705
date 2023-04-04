@@ -55,8 +55,9 @@ Matriz2D::Matriz2D(const Matriz2D& m){
 }
 
 Matriz2D::Matriz2D(Matriz2D&& m){
-    m.filas=NULL;
-    m.columnas=NULL;
+    this->filas=m.filas;
+    this->columnas=m.columnas;
+    this->ptr=m.ptr;
     m.ptr=NULL;
 }
 
