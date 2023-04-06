@@ -102,13 +102,21 @@ Matriz2D operator-(const Matriz2D& m1, const Matriz2D& m2){
 }
 
 Matriz2D operator*(const Matriz2D& m1, const Matriz2D& m2){
-    Matriz2D multiplicacion(m1.filas,m2.columnas);
-    for(int i=0;i<multiplicacion.filas;i++){
-        for(int j=0;j<multiplicacion.columnas;j++){
-            multiplicacion.ptr[i][j]= m1.ptr[i][j]* m2.ptr[i][j];
+   if(m1.columnas==m2.filas){
+        Matriz2D multiplicacion(m1.filas,m2.columnas);
+        for(int i=0;i<multiplicacion.filas;i++){
+            for(int j=0;j<multiplicacion.columnas;j++){
+                multiplicacion.ptr[i][j]=0;
+                for(int w=0;w<m1.columnas;w++){
+                    multiplicacion.ptr[i][j]+=m1.ptr[i][w]*m2.ptr[w][j];
+                }
+            }
         }
+        return multiplicacion;
     }
-    return multiplicacion;
+    else{
+        return 0;
+    }
 }
 
 Matriz2D operator+(const Matriz2D& m, float n){
